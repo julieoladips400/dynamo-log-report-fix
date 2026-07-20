@@ -1,0 +1,24 @@
+artifacts = ["report.json"]
+
+[task]
+name = "dynamo/log-report"
+description = "Analyze access logs and output a JSON summary report containing total requests, unique IPs, and top path."
+
+[verifier]
+timeout_sec = 300
+
+[environment]
+allow_internet = false
+mcp_servers = []
+
+[metadata]
+category = "data_analysis"
+subcategory = "log_parsing"
+task_objective = "Parse access.log and output summary statistics to report.json."
+artifact_type = "json"
+expert_time_estimate_hours = 0.5
+model_tested = "gpt-4o"
+agent_tested = "swe-bench"
+difficulty_explanation = "Requires basic Python log parsing and JSON output generation."
+solution_explanation = "Parses access.log line by line to count total requests, unique IPs, and most common path, saving output to report.json."
+verification_explanation = "Runs test.sh to verify the contents and schema of report.json."
